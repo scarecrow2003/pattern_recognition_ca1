@@ -12,6 +12,10 @@ function [train_error, test_error] = q1()
         
         test_result = classify_beta_binomial(model, xtest);
         test_error(i) = mean(abs(test_result-ytest));
+        if alpha(i) == 1 || alpha(i) == 10 || alpha(i) == 100
+            display("training error: " + training_error(i));
+            display("test error: " + test_error(i));
+        end
     end
     hold on;
     plot(alpha, train_error, 'b');
